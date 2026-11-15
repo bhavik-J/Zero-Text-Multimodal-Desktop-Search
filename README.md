@@ -27,7 +27,20 @@ Screenshots: real CLIP ViT-B/32 (ONNX int8) over the 3,000-image synthetic "chao
 | `milestone-4` | React UI: search + live sketch-pad, 2D canvas / 3D three.js galaxy, duplicates, inspector | ✅ |
 | `milestone-5` | Pipelined indexer, ONNX fp32/fp16/int8, exact+near dedup, chaos dataset, benchmarks, demo | ✅ recall 0.953 |
 
-## Quick start
+## Quick start (macOS / Linux)
+
+```bash
+git clone https://github.com/bhavik-J/Zero-Text-Multimodal-Desktop-Search.git PixelIndex
+cd PixelIndex
+./setup.sh --with-testset     # installs everything (Homebrew on macOS), CLIP model, 3,300 test pictures
+./start.sh data/testset       # starts the app, indexes the test pictures, opens http://localhost:5173
+```
+
+`./start.sh ~/Pictures` indexes your own folder instead; plain `./start.sh` just starts the app.
+Press **Ctrl+C** to stop. Needs Python 3.10+, Node 18+ and Tesseract — `setup.sh` installs
+any that are missing via Homebrew on macOS.
+
+<details><summary>Manual setup</summary>
 
 ```bash
 cd backend
@@ -41,6 +54,8 @@ cd frontend
 npm install
 npm run dev                              # http://localhost:5173 (proxies /api → :8000)
 ```
+
+</details>
 
 Add a folder in the sidebar, press **Index**, then search or open **Galaxy → Compute**.
 

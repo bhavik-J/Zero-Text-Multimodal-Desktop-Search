@@ -9,7 +9,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 ROOT="$(pwd)"
 WITH_TESTSET=0
-[[ "${1:-}" == "--with-testset" ]] && WITH_TESTSET=1
+if [[ "${1:-}" == "--with-testset" ]]; then WITH_TESTSET=1; fi
 
 say()  { printf "\n\033[1;35m==>\033[0m \033[1m%s\033[0m\n" "$*"; }
 fail() { printf "\n\033[1;31mERROR:\033[0m %s\n" "$*" >&2; exit 1; }
@@ -92,4 +92,6 @@ fi
 
 say "Setup complete 🎉"
 echo "Start the app with:   ./start.sh"
-[[ $WITH_TESTSET == 1 ]] && echo "                 or:   ./start.sh data/testset   (opens with the test pictures loaded)"
+if [[ $WITH_TESTSET == 1 ]]; then
+  echo "                 or:   ./start.sh data/testset   (opens with the test pictures loaded)"
+fi

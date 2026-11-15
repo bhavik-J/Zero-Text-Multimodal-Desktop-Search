@@ -38,7 +38,7 @@ echo "Starting backend on :$API_PORT  (log: data/logs/backend.log)"
 PIDS+=($!)
 
 echo "Starting frontend on :$UI_PORT (log: data/logs/frontend.log)"
-(cd frontend && VITE_API_PORT="$API_PORT" exec npx vite --port "$UI_PORT" --strictPort >"$ROOT/data/logs/frontend.log" 2>&1) &
+(cd frontend && VITE_API_PORT="$API_PORT" exec ./node_modules/.bin/vite --port "$UI_PORT" --strictPort >"$ROOT/data/logs/frontend.log" 2>&1) &
 PIDS+=($!)
 
 api() { curl -fsS "http://127.0.0.1:$API_PORT/api/v1$1" "${@:2}"; }
