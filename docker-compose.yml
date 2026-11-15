@@ -1,0 +1,39 @@
+# PixelIndex in Docker.
+#
+#   PHOTOS=~/Pictures docker compose up --build     # then open http://127.0.0.1:5173
+#
+# PHOTOS is the folder on your computer to search (mounted read-only at /photos
+# inside the container; it is added and indexed automatically). Defaults to ./photos.
+# The index, thumbnails and galaxy live in the "pixelindex-data" volume.
+name: pixelindex
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+      args:
+        ONNX_PRECISION: ${ONNX_PRECISION:-fp32}
+    image: pixelindex-backend
+    volumes:
+      - pixelindex-data:/data
+      - ${PHOTOS:-./photos}:/photos:ro
+    environment:
+      AUTO_INDEX: ${AUTO_INDEX:-1}
+      VS_OCR_ENGINE: ${OCR_ENGINE:-auto}
+    restart: unless-stopped
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+    image: pixelindex-web
+    ports:
+      - "127.0.0.1:${PORT:-5173}:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pixelindex-data:

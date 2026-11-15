@@ -29,7 +29,38 @@ Screenshots: real CLIP ViT-B/32 (ONNX int8) over the 3,000-image synthetic "chao
 | `milestone-4` | React UI: search + live sketch-pad, 2D canvas / 3D three.js galaxy, duplicates, inspector | ✅ |
 | `milestone-5` | Pipelined indexer, ONNX fp32/fp16/int8, exact+near dedup, chaos dataset, benchmarks, demo | ✅ recall 0.953 |
 
-## Quick start (macOS / Linux)
+## Run with Docker (any OS — easiest for others)
+
+Only needs [Docker Desktop](https://www.docker.com/products/docker-desktop/) (Mac, Windows, Linux).
+No Python, Node or Tesseract to install.
+
+```bash
+git clone https://github.com/bhavik-J/Zero-Text-Multimodal-Desktop-Search.git PixelIndex
+cd PixelIndex
+PHOTOS=~/Pictures docker compose up --build
+```
+
+Then open **http://127.0.0.1:5173**. Your `PHOTOS` folder is shared with the app read-only
+(as `/photos`) and indexed automatically — watch the progress in the sidebar. The first build
+takes ~5–10 min (downloads the CLIP model into the image); later starts take seconds.
+
+| | Command |
+|---|---|
+| Start (macOS / Linux) | `PHOTOS=~/Pictures docker compose up --build` |
+| Start (Windows PowerShell) | `$env:PHOTOS="C:\Users\you\Pictures"; docker compose up --build` |
+| Run in the background | add `-d`, stop with `docker compose down` |
+| Use the bundled `./photos` folder | copy pictures into `photos/`, then `docker compose up --build` |
+| Different port | `PORT=8080 docker compose up` → http://127.0.0.1:8080 |
+| Faster, slightly less accurate model | `ONNX_PRECISION=int8 docker compose up --build` |
+| Don't auto-index on start | `AUTO_INDEX=0 docker compose up` |
+| Start over (delete the index) | `docker compose down -v` |
+| Update after `git pull` | `docker compose up --build` |
+
+Notes: inside Docker your files appear under `/photos/…` (add more with **Add folder → `/photos/sub/folder`**).
+Indexing is somewhat slower than a native run on macOS because files are read through Docker's file sharing.
+Everything stays on your machine; the containers only listen on `127.0.0.1`.
+
+## Run natively (macOS / Linux)
 
 ```bash
 git clone https://github.com/bhavik-J/Zero-Text-Multimodal-Desktop-Search.git PixelIndex
