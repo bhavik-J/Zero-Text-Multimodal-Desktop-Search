@@ -28,17 +28,17 @@ done
 PIDS=()
 cleanup() {
   echo; echo "Stopping PixelIndex…"
-  for p in "${PIDS[@]}"; do kill "$p" 2>/dev/null || true; done
+  for p in ${PIDS[@]+"${PIDS[@]}"}; do kill "$p" 2>/dev/null || true; done
   wait 2>/dev/null || true
 }
 trap cleanup EXIT INT TERM
 
 echo "Starting backend on :$API_PORT  (log: data/logs/backend.log)"
-(cd backend && exec "$VPY" -m uvicorn app.main:app --port "$API_PORT" >"$ROOT/data/logs/backend.log" 2>&1) &
+(cd backend && exec "$VPY" -m uvicorn app.main:app --host 127.0.0.1 --port "$API_PORT" >"$ROOT/data/logs/backend.log" 2>&1) &
 PIDS+=($!)
 
 echo "Starting frontend on :$UI_PORT (log: data/logs/frontend.log)"
-(cd frontend && VITE_API_PORT="$API_PORT" exec ./node_modules/.bin/vite --port "$UI_PORT" --strictPort >"$ROOT/data/logs/frontend.log" 2>&1) &
+(cd frontend && VITE_API_PORT="$API_PORT" exec ./node_modules/.bin/vite --host 127.0.0.1 --port "$UI_PORT" --strictPort >"$ROOT/data/logs/frontend.log" 2>&1) &
 PIDS+=($!)
 
 api() { curl -fsS "http://127.0.0.1:$API_PORT/api/v1$1" "${@:2}"; }
@@ -46,7 +46,8 @@ for _ in $(seq 90); do
   api /system/info >/dev/null 2>&1 && curl -fsS "http://127.0.0.1:$UI_PORT" >/dev/null 2>&1 && break
   sleep 1
 done
-api /system/info >/dev/null 2>&1 || { echo "Backend did not start — see data/logs/backend.log"; tail -20 data/logs/backend.log; exit 1; }
+api /system/info >/dev/null 2>&1 || { echo "Backend did not start — last lines of data/logs/backend.log:"; tail -20 data/logs/backend.log; exit 1; }
+curl -fsS "http://127.0.0.1:$UI_PORT" >/dev/null 2>&1 || { echo "Frontend did not start — last lines of data/logs/frontend.log:"; tail -20 data/logs/frontend.log; exit 1; }
 
 if [[ -n "$FOLDER" ]]; then
   ABS="$(cd "$FOLDER" 2>/dev/null && pwd)" || { echo "Folder not found: $FOLDER"; exit 1; }
@@ -68,10 +69,10 @@ print("Indexing started — watch progress in the app's sidebar (new/changed ima
 EOF
 fi
 
-URL="http://localhost:$UI_PORT"
+URL="http://127.0.0.1:$UI_PORT"
 echo
 echo "  PixelIndex is running →  $URL"
-echo "  Press Ctrl+C to stop."
+echo "  Keep this Terminal window open while you use it; press Ctrl+C to stop."
 if [[ "$(uname -s)" == "Darwin" ]]; then open "$URL"
 elif command -v xdg-open >/dev/null 2>&1; then xdg-open "$URL" >/dev/null 2>&1 || true
 fi

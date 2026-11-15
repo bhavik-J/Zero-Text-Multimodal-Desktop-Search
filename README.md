@@ -33,7 +33,7 @@ Screenshots: real CLIP ViT-B/32 (ONNX int8) over the 3,000-image synthetic "chao
 git clone https://github.com/bhavik-J/Zero-Text-Multimodal-Desktop-Search.git PixelIndex
 cd PixelIndex
 ./setup.sh --with-testset     # installs everything (Homebrew on macOS), CLIP model, 3,300 test pictures
-./start.sh data/testset       # starts the app, indexes the test pictures, opens http://localhost:5173
+./start.sh data/testset       # starts the app, indexes the test pictures, opens http://127.0.0.1:5173
 ```
 
 `./start.sh ~/Pictures` indexes your own folder instead; plain `./start.sh` just starts the app.
