@@ -19,6 +19,9 @@ imagehash>=4.3
 # OCR (Tesseract binary required: apt install tesseract-ocr / brew install tesseract)
 pytesseract>=0.3.10
 
+# Test-set builder (scripts/make_test_dataset.py)
+pyarrow>=15
+
 # Tests
 pytest>=8
 httpx>=0.27
