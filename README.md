@@ -53,6 +53,16 @@ python scripts/benchmark.py --dataset data/chaos --n 400            # → docs/B
 python scripts/eval_dedup.py                                        # dedup recall vs ground truth
 ```
 
+### Test on real photos
+
+```bash
+python scripts/make_test_dataset.py          # → data/testset: 1,500 COCO + 1,000 Flickr8k photos,
+                                             #   600 synthetic screenshots, 236 planted duplicates
+python scripts/eval_test_dataset.py --index  # index with real CLIP + score → docs/EVALUATION.md
+```
+
+`data/testset` is also a good folder to add in the app to try search by hand. Results: [docs/EVALUATION.md](docs/EVALUATION.md).
+
 ### Configuration (environment variables)
 
 | Variable | Default | Meaning |
