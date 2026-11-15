@@ -149,8 +149,13 @@ def main(argv: list[str] | None = None) -> None:
     objects = sorted(c for c, n in counts.items() if n >= a.min_photos)
     tv = enc.encode_texts([f"a photo of a {o}" for o in objects])
     per_obj = []
+    # Flickr photos have no object labels (yet are full of people and dogs), so
+    # they are left out here: a Flickr hit would be scored wrong even when correct.
+    labelled = np.array([m.get("source") != "flickr" for m in meta])
     for o, v in zip(objects, tv):
-        order = np.argsort(-(mat @ v))
+        s = mat @ v
+        s[~labelled] = -np.inf
+        order = np.argsort(-s)
         hit = [o in meta[j].get("categories", []) for j in order[:50]]
         per_obj.append({"object": o, "photos": counts[o], "P@10": sum(hit[:10]) / 10, "P@50": sum(hit) / 50})
     per_obj.sort(key=lambda r: -r["P@10"])
@@ -247,7 +252,7 @@ def write_report(r: dict, a) -> None:
         "## 2. Object queries (COCO labels)",
         "",
         f"`\"a photo of a {{object}}\"` for the {o['n_objects']} objects with ≥ {a.min_photos} photos, searched "
-        f"over the whole library. **Mean precision@10 = {o['mean_P@10']:.1%}**, precision@50 = {o['mean_P@50']:.1%}.",
+        f"over the COCO photos and screenshots (Flickr photos are unlabelled, so they are left out). **Mean precision@10 = {o['mean_P@10']:.1%}**, precision@50 = {o['mean_P@50']:.1%}.",
         "",
         "| object | photos | P@10 | P@50 |",
         "|---|---:|---:|---:|",

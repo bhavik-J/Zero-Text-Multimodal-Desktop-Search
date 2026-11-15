@@ -1,0 +1,561 @@
+{
+ "model": "clip-vit-base-patch32/onnx-fp32",
+ "n_indexed": 3300,
+ "n_files": 3300,
+ "index_seconds": null,
+ "captions": {
+  "queries": 5000,
+  "photos": 1000,
+  "all_library": {
+   "R@1": 0.4956,
+   "R@5": 0.7576,
+   "R@10": 0.849,
+   "median_rank": 2.0
+  },
+  "flickr_only": {
+   "R@1": 0.537,
+   "R@5": 0.8078,
+   "R@10": 0.8902,
+   "median_rank": 1.0
+  },
+  "examples": [
+   {
+    "caption": "Two bicycles are standing behind two people sitting on the grass near a body of water .",
+    "rank": 1,
+    "top_hit": "Desktop/random/IMG_20190520_045634.jpg",
+    "top_hit_caption": "Two bicycles are standing behind two people sitting on the grass near a body of water ."
+   },
+   {
+    "caption": "A child is holding a colorful object and overlooking a crowd of people while sitting on the shoulders of an older person .",
+    "rank": 1,
+    "top_hit": "Downloads/IMG_20220507_123104.jpg",
+    "top_hit_caption": "A child is holding a colorful object and overlooking a crowd of people while sitting on the shoulders of an older person ."
+   },
+   {
+    "caption": "A boy wearing jeans leaps in the air and shows his shadow below .",
+    "rank": 6,
+    "top_hit": "Pictures/Trip/504230748073493.jpg",
+    "top_hit_caption": "photo_coco"
+   },
+   {
+    "caption": "A boy in a blue jacket , carrying a red sled , running away , followed by a small dog",
+    "rank": 1,
+    "top_hit": "Camera Roll/2024/IMG_9930.jpg",
+    "top_hit_caption": "A boy drags his sled through the snow ."
+   },
+   {
+    "caption": "Girl is wading through the gray ocean .",
+    "rank": 1,
+    "top_hit": "Pictures/Family/228420882055139.jpg",
+    "top_hit_caption": "A girl in a blue swimsuit walks into the ocean ."
+   },
+   {
+    "caption": "A person is laughing on a roller coaster ride .",
+    "rank": 1,
+    "top_hit": "Pictures/Trip/WhatsApp Image 2021-02-05 at 14.23.27.jpg",
+    "top_hit_caption": "A person is laughing on a roller coaster ride ."
+   }
+  ],
+  "seconds": 25.9
+ },
+ "objects": {
+  "n_objects": 71,
+  "mean_P@10": 0.6915,
+  "mean_P@50": 0.4225,
+  "per_object": [
+   {
+    "object": "bench",
+    "photos": 70,
+    "P@10": 1.0,
+    "P@50": 0.56
+   },
+   {
+    "object": "bird",
+    "photos": 37,
+    "P@10": 1.0,
+    "P@50": 0.48
+   },
+   {
+    "object": "bus",
+    "photos": 68,
+    "P@10": 1.0,
+    "P@50": 0.94
+   },
+   {
+    "object": "clock",
+    "photos": 54,
+    "P@10": 1.0,
+    "P@50": 0.6
+   },
+   {
+    "object": "cow",
+    "photos": 24,
+    "P@10": 1.0,
+    "P@50": 0.46
+   },
+   {
+    "object": "elephant",
+    "photos": 21,
+    "P@10": 1.0,
+    "P@50": 0.42
+   },
+   {
+    "object": "fire hydrant",
+    "photos": 29,
+    "P@10": 1.0,
+    "P@50": 0.38
+   },
+   {
+    "object": "giraffe",
+    "photos": 23,
+    "P@10": 1.0,
+    "P@50": 0.46
+   },
+   {
+    "object": "kite",
+    "photos": 30,
+    "P@10": 1.0,
+    "P@50": 0.56
+   },
+   {
+    "object": "motorcycle",
+    "photos": 47,
+    "P@10": 1.0,
+    "P@50": 0.68
+   },
+   {
+    "object": "pizza",
+    "photos": 42,
+    "P@10": 1.0,
+    "P@50": 0.74
+   },
+   {
+    "object": "skateboard",
+    "photos": 34,
+    "P@10": 1.0,
+    "P@50": 0.58
+   },
+   {
+    "object": "stop sign",
+    "photos": 22,
+    "P@10": 1.0,
+    "P@50": 0.32
+   },
+   {
+    "object": "toilet",
+    "photos": 42,
+    "P@10": 1.0,
+    "P@50": 0.68
+   },
+   {
+    "object": "zebra",
+    "photos": 21,
+    "P@10": 1.0,
+    "P@50": 0.48
+   },
+   {
+    "object": "airplane",
+    "photos": 37,
+    "P@10": 0.9,
+    "P@50": 0.7
+   },
+   {
+    "object": "banana",
+    "photos": 36,
+    "P@10": 0.9,
+    "P@50": 0.36
+   },
+   {
+    "object": "baseball glove",
+    "photos": 36,
+    "P@10": 0.9,
+    "P@50": 0.66
+   },
+   {
+    "object": "bed",
+    "photos": 38,
+    "P@10": 0.9,
+    "P@50": 0.58
+   },
+   {
+    "object": "boat",
+    "photos": 45,
+    "P@10": 0.9,
+    "P@50": 0.7
+   },
+   {
+    "object": "cell phone",
+    "photos": 66,
+    "P@10": 0.9,
+    "P@50": 0.42
+   },
+   {
+    "object": "dog",
+    "photos": 60,
+    "P@10": 0.9,
+    "P@50": 0.6
+   },
+   {
+    "object": "donut",
+    "photos": 22,
+    "P@10": 0.9,
+    "P@50": 0.4
+   },
+   {
+    "object": "keyboard",
+    "photos": 38,
+    "P@10": 0.9,
+    "P@50": 0.5
+   },
+   {
+    "object": "refrigerator",
+    "photos": 26,
+    "P@10": 0.9,
+    "P@50": 0.38
+   },
+   {
+    "object": "suitcase",
+    "photos": 35,
+    "P@10": 0.9,
+    "P@50": 0.5
+   },
+   {
+    "object": "surfboard",
+    "photos": 47,
+    "P@10": 0.9,
+    "P@50": 0.82
+   },
+   {
+    "object": "tennis racket",
+    "photos": 45,
+    "P@10": 0.9,
+    "P@50": 0.8
+   },
+   {
+    "object": "traffic light",
+    "photos": 63,
+    "P@10": 0.9,
+    "P@50": 0.54
+   },
+   {
+    "object": "train",
+    "photos": 45,
+    "P@10": 0.9,
+    "P@50": 0.8
+   },
+   {
+    "object": "umbrella",
+    "photos": 51,
+    "P@10": 0.9,
+    "P@50": 0.54
+   },
+   {
+    "object": "baseball bat",
+    "photos": 33,
+    "P@10": 0.8,
+    "P@50": 0.54
+   },
+   {
+    "object": "book",
+    "photos": 69,
+    "P@10": 0.8,
+    "P@50": 0.18
+   },
+   {
+    "object": "broccoli",
+    "photos": 21,
+    "P@10": 0.8,
+    "P@50": 0.24
+   },
+   {
+    "object": "cake",
+    "photos": 35,
+    "P@10": 0.8,
+    "P@50": 0.44
+   },
+   {
+    "object": "sandwich",
+    "photos": 25,
+    "P@10": 0.8,
+    "P@50": 0.34
+   },
+   {
+    "object": "sink",
+    "photos": 61,
+    "P@10": 0.8,
+    "P@50": 0.54
+   },
+   {
+    "object": "skis",
+    "photos": 37,
+    "P@10": 0.8,
+    "P@50": 0.64
+   },
+   {
+    "object": "teddy bear",
+    "photos": 35,
+    "P@10": 0.8,
+    "P@50": 0.46
+   },
+   {
+    "object": "toothbrush",
+    "photos": 20,
+    "P@10": 0.8,
+    "P@50": 0.26
+   },
+   {
+    "object": "truck",
+    "photos": 80,
+    "P@10": 0.8,
+    "P@50": 0.44
+   },
+   {
+    "object": "vase",
+    "photos": 47,
+    "P@10": 0.8,
+    "P@50": 0.4
+   },
+   {
+    "object": "couch",
+    "photos": 64,
+    "P@10": 0.7,
+    "P@50": 0.38
+   },
+   {
+    "object": "frisbee",
+    "photos": 31,
+    "P@10": 0.7,
+    "P@50": 0.42
+   },
+   {
+    "object": "horse",
+    "photos": 39,
+    "P@10": 0.7,
+    "P@50": 0.62
+   },
+   {
+    "object": "bicycle",
+    "photos": 42,
+    "P@10": 0.6,
+    "P@50": 0.28
+   },
+   {
+    "object": "laptop",
+    "photos": 56,
+    "P@10": 0.6,
+    "P@50": 0.48
+   },
+   {
+    "object": "potted plant",
+    "photos": 61,
+    "P@10": 0.6,
+    "P@50": 0.2
+   },
+   {
+    "object": "tv",
+    "photos": 70,
+    "P@10": 0.6,
+    "P@50": 0.4
+   },
+   {
+    "object": "cat",
+    "photos": 48,
+    "P@10": 0.5,
+    "P@50": 0.52
+   },
+   {
+    "object": "dining table",
+    "photos": 143,
+    "P@10": 0.5,
+    "P@50": 0.5
+   },
+   {
+    "object": "orange",
+    "photos": 31,
+    "P@10": 0.5,
+    "P@50": 0.18
+   },
+   {
+    "object": "oven",
+    "photos": 35,
+    "P@10": 0.5,
+    "P@50": 0.32
+   },
+   {
+    "object": "tie",
+    "photos": 39,
+    "P@10": 0.5,
+    "P@50": 0.24
+   },
+   {
+    "object": "apple",
+    "photos": 27,
+    "P@10": 0.4,
+    "P@50": 0.12
+   },
+   {
+    "object": "bowl",
+    "photos": 103,
+    "P@10": 0.4,
+    "P@50": 0.22
+   },
+   {
+    "object": "car",
+    "photos": 174,
+    "P@10": 0.4,
+    "P@50": 0.46
+   },
+   {
+    "object": "carrot",
+    "photos": 22,
+    "P@10": 0.4,
+    "P@50": 0.14
+   },
+   {
+    "object": "person",
+    "photos": 818,
+    "P@10": 0.4,
+    "P@50": 0.58
+   },
+   {
+    "object": "backpack",
+    "photos": 77,
+    "P@10": 0.3,
+    "P@50": 0.12
+   },
+   {
+    "object": "remote",
+    "photos": 45,
+    "P@10": 0.3,
+    "P@50": 0.26
+   },
+   {
+    "object": "sports ball",
+    "photos": 51,
+    "P@10": 0.3,
+    "P@50": 0.36
+   },
+   {
+    "object": "bottle",
+    "photos": 115,
+    "P@10": 0.2,
+    "P@50": 0.14
+   },
+   {
+    "object": "handbag",
+    "photos": 96,
+    "P@10": 0.2,
+    "P@50": 0.2
+   },
+   {
+    "object": "mouse",
+    "photos": 36,
+    "P@10": 0.2,
+    "P@50": 0.12
+   },
+   {
+    "object": "chair",
+    "photos": 166,
+    "P@10": 0.1,
+    "P@50": 0.24
+   },
+   {
+    "object": "cup",
+    "photos": 118,
+    "P@10": 0.1,
+    "P@50": 0.12
+   },
+   {
+    "object": "spoon",
+    "photos": 39,
+    "P@10": 0.1,
+    "P@50": 0.06
+   },
+   {
+    "object": "wine glass",
+    "photos": 27,
+    "P@10": 0.1,
+    "P@50": 0.08
+   },
+   {
+    "object": "fork",
+    "photos": 51,
+    "P@10": 0.0,
+    "P@50": 0.1
+   },
+   {
+    "object": "knife",
+    "photos": 48,
+    "P@10": 0.0,
+    "P@50": 0.02
+   }
+  ]
+ },
+ "ocr": {
+  "queries": 79,
+  "top10_hit_rate": 0.6709,
+  "ocr_words_indexed": 8017,
+  "examples": [
+   {
+    "query": "Priority Queues",
+    "category": "slide",
+    "found_in_top10": true
+   },
+   {
+    "query": "Latency line",
+    "category": "chart",
+    "found_in_top10": true
+   },
+   {
+    "query": "under policy",
+    "category": "slide",
+    "found_in_top10": false
+   },
+   {
+    "query": "MailBox Search",
+    "category": "ui",
+    "found_in_top10": false
+   },
+   {
+    "query": "Component Analysis",
+    "category": "slide",
+    "found_in_top10": true
+   },
+   {
+    "query": "SAYS FIRST",
+    "category": "meme",
+    "found_in_top10": true
+   }
+  ]
+ },
+ "similar": {
+  "pairs": 118,
+  "dup_in_top1": 0.9661,
+  "dup_in_top5": 0.9915
+ },
+ "dedup": {
+  "planted_pairs": 236,
+  "recall": 0.9958,
+  "recall_by_kind": {
+   "exact": 1.0,
+   "near": 0.9915
+  },
+  "recall_by_transform": {
+   "brightness": "13/13",
+   "brightness+crop": "8/8",
+   "brightness+reencode": "6/6",
+   "brightness+resize": "9/9",
+   "crop": "18/18",
+   "crop+reencode": "9/10",
+   "crop+resize": "14/14",
+   "reencode": "15/15",
+   "reencode+resize": "11/11",
+   "resize": "14/14"
+  },
+  "pair_precision": 0.9151,
+  "within_group_pairs": 259,
+  "n_groups": 239,
+  "n_images": 486,
+  "seconds": 2.1
+ }
+}
