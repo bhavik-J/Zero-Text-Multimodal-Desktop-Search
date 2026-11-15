@@ -8,7 +8,7 @@ non-overlapping colour regions). Clustering in PCA-50 space often produces
 clusters that are interleaved on the 2D map, which reads as noise in the
 galaxy view. It is also much cheaper (silhouette on 2-3 dims).
 
-``k`` is chosen by silhouette score over ``[min(2, N-1) .. min(24, N // 3)]``
+``k`` is chosen by silhouette score over ``[max(2, min(8, N // 150)) .. min(24, N // 3)]``
 unless given. The lower bound is 2 (not 4 as in the PRD sketch) so a library
 that genuinely has 2-3 themes is not over-split. Silhouette is computed on a
 random sample of at most 3000 points for speed.
@@ -66,8 +66,13 @@ class ClusterResult:
 
 
 def k_range(n: int) -> range:
-    """Candidate cluster counts for ``n`` points (may be a single value)."""
-    lo = min(2, n - 1)
+    """Candidate cluster counts for ``n`` points (may be a single value).
+
+    Large libraries get a higher floor (one theme per ~150 images, up to 8):
+    on real photos the silhouette score otherwise peaks at k=2 ("photos vs
+    screenshots"), which is a useless galaxy to explore.
+    """
+    lo = min(max(2, min(8, n // 150)), n - 1)
     hi = min(MAX_K, n // 3)
     hi = max(hi, lo)
     return range(max(lo, 1), max(hi, 1) + 1)
