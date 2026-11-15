@@ -9,6 +9,8 @@ Everything runs on your machine: no cloud calls at index or query time.
 > **Project**: Zero-Text Multimodal Desktop Search ([idea_84e84c6c](https://www.reinforce-sst.com/dashboard/ideas/idea_84e84c6c)) ·
 > **Docs**: [Technical PRD & plan](docs/PRD.md) · [Benchmarks](docs/BENCHMARKS.md) · [Demo transcript](docs/demo/demo_transcript.md)
 
+**▶ [Watch the 3-minute demo video](docs/demo/video/pixelindex-demo.mp4)** — every feature on 3,300 real photos and screenshots.
+
 ![Vibe search](docs/demo/real-01-vibe-search.png)
 
 | Galaxy (UMAP, 19 auto-labelled themes) | Duplicates |
@@ -77,6 +79,14 @@ python scripts/eval_test_dataset.py --index  # index with real CLIP + score → 
 ```
 
 `data/testset` is also a good folder to add in the app to try search by hand. Results: [docs/EVALUATION.md](docs/EVALUATION.md).
+
+### Re-record the demo video
+
+```bash
+./start.sh data/testset                      # app running with the test library indexed
+node scripts/record_demo.cjs --url http://127.0.0.1:5173 --inbox /path/to/a/small/new/folder
+python scripts/cut_demo.py docs/demo/video   # trims spinner waits → pixelindex-demo.mp4
+```
 
 ### Configuration (environment variables)
 

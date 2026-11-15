@@ -75,3 +75,7 @@ Thumbs.db
 
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
+
+# Demo recording intermediates
+docs/demo/video/*.webm
+docs/demo/video/cuts.json
